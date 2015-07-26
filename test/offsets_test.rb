@@ -1,7 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'offsets'
+require './lib/offsets'
 
 class OffsetsTest < Minitest::Test
+
 
 end

@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'enigma'
+require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
 
