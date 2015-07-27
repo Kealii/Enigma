@@ -17,9 +17,7 @@ class Offsets
   def extract_date_key
     date_key = []
     date_key << square_date.to_s.chars
-    date_key.flatten.map(&:to_i).last(4)
+    @date = date_key.flatten.map(&:to_i).last(4)
   end
-
-
-
+  
 end
