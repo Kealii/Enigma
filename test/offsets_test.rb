@@ -21,4 +21,10 @@ class OffsetsTest < Minitest::Test
     assert_equal square, 12345654321
   end
 
+  def test_extracts_last_four_digits
+    offset = Offsets.new("111111")
+    test_key = offset.extract_date_key
+    assert_equal test_key, [4, 3, 2, 1]
+  end
+
 end
