@@ -19,17 +19,9 @@ class EnigmaTest < Minitest::Test
     assert_equal "test test test\n", e.final_message
   end
 
-
-  #
-  # def test_it_takes_input
-  #   mess = File.open("../files/message.txt", "r")
-  #   assert_equal "test test test", mess.read
-  # end
-
-  # def test_takes
-  #   e = Enigma.new
-  #   argvinput =
-  #
-  # end
+  def test_we_can_encrypt_string
+    e = Enigma.new
+    assert_equal "hello", e.encrypt("hello", 0)
+  end
 
 end
