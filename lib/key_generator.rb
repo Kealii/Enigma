@@ -11,7 +11,7 @@ class KeyGenerator
   end
 
   def a_key
-    a_key = @key[0..1].join.to_i
+    a_key = key[0..1].join.to_i
   end
 
   def b_key

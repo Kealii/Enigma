@@ -27,28 +27,28 @@ class OffsetsTest < Minitest::Test
     assert_equal test_key, [4, 3, 2, 1]
   end
 
-  def test_finds_aoffset
-    offset = Offsets.new("111111")
-    test_key = offset.extract_date_key
-    assert_equal 4, offset.a_offset
+  def test_adds_arotations
+    offset = Offsets.new
+    offset.extract_date_key
+    assert_equal 16, offset.a_rotations
   end
 
-  def test_finds_boffset
-    offset = Offsets.new("111111")
-    test_key = offset.extract_date_key
-    assert_equal 3, offset.b_offset
+  def test_adds_brotations
+    offset = Offsets.new
+    offset.extract_date_key
+    assert_equal 26, offset.b_rotations
   end
 
-  def test_finds_coffset
-    offset = Offsets.new("111111")
-    test_key = offset.extract_date_key
-    assert_equal 2, offset.c_offset
+  def test_adds_arotations
+    offset = Offsets.new
+    offset.extract_date_key
+    assert_equal 36, offset.c_rotations
   end
 
-  def test_finds_doffset
-    offset = Offsets.new("111111")
-    test_key = offset.extract_date_key
-    assert_equal 1, offset.d_offset
+  def test_adds_drotations
+    offset = Offsets.new
+    offset.extract_date_key
+    assert_equal 46, offset.d_rotations
   end
 
 
