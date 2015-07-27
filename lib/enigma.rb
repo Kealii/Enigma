@@ -1,4 +1,6 @@
 require_relative 'encryptor'
+require_relative 'offsets'
+require_relative 'key_generator'
 
 class Enigma
 

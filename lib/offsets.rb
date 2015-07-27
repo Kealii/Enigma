@@ -19,5 +19,5 @@ class Offsets
     date_key << square_date.to_s.chars
     @date = date_key.flatten.map(&:to_i).last(4)
   end
-  
+
 end
