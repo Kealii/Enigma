@@ -27,4 +27,29 @@ class OffsetsTest < Minitest::Test
     assert_equal test_key, [4, 3, 2, 1]
   end
 
+  def test_finds_aoffset
+    offset = Offsets.new("111111")
+    test_key = offset.extract_date_key
+    assert_equal 4, offset.a_offset
+  end
+
+  def test_finds_boffset
+    offset = Offsets.new("111111")
+    test_key = offset.extract_date_key
+    assert_equal 3, offset.b_offset
+  end
+
+  def test_finds_coffset
+    offset = Offsets.new("111111")
+    test_key = offset.extract_date_key
+    assert_equal 2, offset.c_offset
+  end
+
+  def test_finds_doffset
+    offset = Offsets.new("111111")
+    test_key = offset.extract_date_key
+    assert_equal 1, offset.d_offset
+  end
+
+
 end
