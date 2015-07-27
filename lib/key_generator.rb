@@ -15,15 +15,15 @@ class KeyGenerator
   end
 
   def b_key
-    b_key = key[1..2].to_i
+    b_key = key[1..2].join.to_i
   end
 
   def c_key
-    c_key = key[3..4].to_i
+    c_key = key[2..3].join.to_i
   end
 
   def d_key
-    d_key = key[4..5].to_i
+    d_key = key[3..4].join.to_i
   end
 
 end

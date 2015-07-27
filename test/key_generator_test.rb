@@ -3,6 +3,7 @@ require 'minitest/pride'
 require '../lib/key_generator'
 
 class KeyGeneratorTest < Minitest::Test
+
   def test_key_generator_exists
     keygen = KeyGenerator.new
     assert_equal keygen, keygen
@@ -16,6 +17,21 @@ class KeyGeneratorTest < Minitest::Test
   def test_finds_akey
     keygen = KeyGenerator.new
     assert_equal 12, keygen.a_key
+  end
+
+  def test_finds_bkey
+    keygen = KeyGenerator.new
+    assert_equal 23, keygen.b_key
+  end
+
+  def test_finds_ckey
+    keygen = KeyGenerator.new
+    assert_equal 34, keygen.c_key
+  end
+
+  def test_finds_dkey
+    keygen = KeyGenerator.new
+    assert_equal 45, keygen.d_key
   end
 
 end
