@@ -14,10 +14,12 @@ class Enigma
     @output.write(@message)
     @output.close
     @final_message = @message
+    puts "Created #{@output} using #{@input}"
+
   end
 
-
-
-  puts "Created #{@output} using #{@input}"
-
 end
+
+e = Enigma.new
+e.collect_message
+e.output_message
