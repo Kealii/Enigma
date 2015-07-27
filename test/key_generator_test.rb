@@ -10,11 +10,12 @@ class KeyGeneratorTest < Minitest::Test
 
   def test_we_can_generate_random_5_digit_number
     keygen = KeyGenerator.new
-    assert_includes (0..99999), keygen.generate_key.to_i
+    assert_includes (11111..99999), keygen.generate_key.to_i
   end
 
-  def test_key_is_5_digits
+  def test_finds_akey
     keygen = KeyGenerator.new
-    assert_equal 5, keygen.generate_key.length
+    assert_equal 12, keygen.a_key
   end
+
 end
