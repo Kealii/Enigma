@@ -3,11 +3,13 @@ require_relative 'key_generator'
 
 class Rotation_calc
 
-@keygen = KeyGenerator.new
+  def initialize
+    @keygen = KeyGenerator.new
+    @offset = Offsets.new
+    # @offset.offset_date
+    @offset.extract_date_key
+  end
 
-@offset = Offsets.new
-@offset.offset_date
-@offset.extract_date_key
 
 
   def a_rotation
