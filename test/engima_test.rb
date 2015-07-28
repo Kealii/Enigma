@@ -34,4 +34,16 @@ class EnigmaTest < Minitest::Test
     assert_equal "hello", e.decrypt("igopp", [1, 2, 3, 4])
   end
 
+  def test_offsets_and_date_adding_to_rotate
+    e = Enigma.new
+    rotation = e.rotation
+    assert_equal [16, 26, 36, 46], rotation
+  end
+
+  def test_we_can_grab_rotation_and_encrypt
+    e = Enigma.new
+    rotation = e.rotation
+    assert_equal "x4is4", e.encrypt("hello", rotation)
+  end
+
 end

@@ -46,6 +46,11 @@ class Enigma
     cipher_for_rotation = character_map.cipher
     cipher_for_rotation[letter]
   end
+
+  def rotation
+    @offset.extract_date_key
+    @offset.master_rotations
+  end
 end
 
 e = Enigma.new
