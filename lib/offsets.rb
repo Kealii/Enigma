@@ -3,8 +3,8 @@ class Offsets
   attr_reader :date
 
   def initialize(date = "111111", key = [1, 2, 3, 4, 5])
-    @key = key
     @date = date
+    @key = key
   end
 
   def offset_date

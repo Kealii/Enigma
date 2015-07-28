@@ -19,9 +19,13 @@ class EnigmaTest < Minitest::Test
     assert_equal "test test test\n", e.final_message
   end
 
-  def test_we_can_encrypt_string
+  def test_we_can_pass_string
     e = Enigma.new
     assert_equal "hello", e.encrypt("hello", 0)
   end
 
+  def test_we_can_encrypt_string_with_rotation
+    e = Enigma.new
+    assert_equal "ifmmp", e.encrypt("hello", 1)
+  end
 end
