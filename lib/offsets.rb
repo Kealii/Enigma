@@ -1,13 +1,14 @@
 require_relative '../lib/key_generator'
 
 class Offsets
+  attr_accessor :key
 
   attr_reader :date
 
   def initialize(date = "111111", key = [1, 2, 3, 4, 5])
-    @keygen = KeyGenerator.new
-    # @key = key
-    @key = @keygen.generate_key
+    # @keygen = KeyGenerator.new
+    @key = key
+    # @key = @keygen.generate_key
     @date = date
   end
 

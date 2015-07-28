@@ -3,11 +3,14 @@ require_relative 'key_generator'
 require_relative 'character_map'
 
 class Enigma
-  attr_accessor :message, :final_message
+  attr_accessor :message, :final_message, :key, :date
 
   def initialize
     @offset = Offsets.new
-    @keygen = KeyGenerator.new
+    # @keygen = KeyGenerator.new
+    # @key = @keygen.generate_key
+    # @offset.key = @key
+    @date = @offset.offset_date
   end
 
   def collect_message
@@ -20,7 +23,7 @@ class Enigma
     @output.write(@message)
     @output.close
     @final_message = @message
-    # puts "Created #{@output} using #{@input}"
+    puts "Created @output using @input using @key and the date of @date"
   end
 
   def encrypt(string, rotation)
