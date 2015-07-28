@@ -26,12 +26,12 @@ class EnigmaTest < Minitest::Test
 
   def test_we_can_encrypt_string_with_rotation
     e = Enigma.new
-    assert_equal "ifmmp", e.encrypt("hello", 1)
+    assert_equal "igopp", e.encrypt("hello", [1, 2, 3, 4])
   end
 
-  def test_rotator_can_be_called
+  def test_we_can_decrypt_string_with_rotation
     e = Enigma.new
-    assert_equal [16, 26, 36, 46], e.rotator
+    assert_equal "hello", e.decrypt("igopp", [1, 2, 3, 4])
   end
 
 end

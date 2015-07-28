@@ -3,14 +3,12 @@ require_relative 'key_generator'
 require_relative 'character_map'
 
 class Enigma
+  attr_accessor :message, :final_message
 
   def initialize
     @offset = Offsets.new
     @keygen = KeyGenerator.new
   end
-
-
-  attr_accessor :message, :final_message
 
   def collect_message
     @input = File.open("#{ARGV[0]}", "r")
@@ -23,33 +21,31 @@ class Enigma
     @output.close
     @final_message = @message
     # puts "Created #{@output} using #{@input}"
-
   end
 
   def encrypt(string, rotation)
-    letters = string.split("")
-    results = letters.collect {|x| encrypt_letter(x, rotation)}
-    results.join
+    @results = []
+    @letters = string.split("")
+    @letters.map.with_index do |letter, index|
+      @results << encrypt_letter(letter, rotation[index%4])
+    end
+    @results.join
   end
 
   def decrypt(string, rotation)
-    letters = string.split("")
-    results = letters.collect {|x| encrypt_letter(x, ( -1 * rotation))}
-    results.join
+    @results = []
+    @letters = string.split("")
+    @letters.map.with_index do |letter, index|
+      @results << encrypt_letter(letter, (-1 * rotation[index%4]))
+    end
+    @results.join
   end
 
   def encrypt_letter(letter, rotation)
     character_map = CharacterMap.new(rotation)
-    rotation =
     cipher_for_rotation = character_map.cipher
     cipher_for_rotation[letter]
   end
-
-  def rotator
-    @offset.extract_date_key
-    rotation = @offset.master_rotations
-  end
-
 end
 
 e = Enigma.new
