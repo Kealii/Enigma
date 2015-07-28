@@ -29,4 +29,9 @@ class EnigmaTest < Minitest::Test
     assert_equal "ifmmp", e.encrypt("hello", 1)
   end
 
+  def test_rotator_can_be_called
+    e = Enigma.new
+    assert_equal [16, 26, 36, 46], e.rotator
+  end
+
 end

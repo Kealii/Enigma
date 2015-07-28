@@ -7,7 +7,6 @@ class Enigma
   def initialize
     @offset = Offsets.new
     @keygen = KeyGenerator.new
-    @rotate = @offset.extract_date_key
   end
 
 
@@ -29,7 +28,7 @@ class Enigma
 
   def encrypt(string, rotation)
     letters = string.split("")
-    results = letters.collect {|x| encrypt_letter(x, @rotate.a_rotations)}
+    results = letters.collect {|x| encrypt_letter(x, rotation)}
     results.join
   end
 
@@ -43,6 +42,11 @@ class Enigma
     character_map = CharacterMap.new(rotation)
     cipher_for_rotation = character_map.cipher
     cipher_for_rotation[letter]
+  end
+
+  def rotator
+    @offset.extract_date_key
+    @offset.master_rotations
   end
 
 end
