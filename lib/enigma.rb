@@ -40,13 +40,14 @@ class Enigma
 
   def encrypt_letter(letter, rotation)
     character_map = CharacterMap.new(rotation)
+    rotation =
     cipher_for_rotation = character_map.cipher
     cipher_for_rotation[letter]
   end
 
   def rotator
     @offset.extract_date_key
-    @offset.master_rotations
+    rotation = @offset.master_rotations
   end
 
 end
