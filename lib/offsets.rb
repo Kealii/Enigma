@@ -36,4 +36,13 @@ class Offsets
   def d_rotations
     @extraction[3].to_i + @key[3..4].join.to_i
   end
+
+  def master_rotations
+    rotations = []
+    rotations << a_rotations
+    rotations << b_rotations
+    rotations << c_rotations
+    rotations << d_rotations
+  end
+
 end

@@ -51,5 +51,10 @@ class OffsetsTest < Minitest::Test
     assert_equal 46, offset.d_rotations
   end
 
+  def test_we_can_call_master_rotation
+    offset = Offsets.new
+    offset.extract_date_key
+    assert_equal [16, 26, 36, 46], offset.master_rotations
+  end
 
 end

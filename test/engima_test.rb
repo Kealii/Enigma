@@ -28,4 +28,5 @@ class EnigmaTest < Minitest::Test
     e = Enigma.new
     assert_equal "ifmmp", e.encrypt("hello", 1)
   end
+
 end
