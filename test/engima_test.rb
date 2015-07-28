@@ -46,4 +46,11 @@ class EnigmaTest < Minitest::Test
     assert_equal "x4is4", e.encrypt("hello", rotation)
   end
 
+  # def test_we_can_something
+  #   e = Enigma.new
+  #
+  # #   assert_equal "x4is4", e.encrypt("hello", rotation)
+  #
+  # end
+
 end

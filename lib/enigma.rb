@@ -48,6 +48,7 @@ class Enigma
   end
 
   def rotation
+    @offset.offset_date
     @offset.extract_date_key
     @offset.master_rotations
   end
