@@ -30,7 +30,7 @@ class Enigma
     @results = []
     @letters = string.split("")
     @letters.map.with_index do |letter, index|
-      @results << encrypt_letter(letter, rotation[index%4])
+      @results << encrypt_letter(letter, rotation[index % 4])
     end
     @results.join
   end
@@ -39,7 +39,7 @@ class Enigma
     @results = []
     @letters = string.split("")
     @letters.map.with_index do |letter, index|
-      @results << encrypt_letter(letter, (-1 * rotation[index%4]))
+      @results << encrypt_letter(letter, (-1 * rotation[index % 4]))
     end
     @results.join
   end

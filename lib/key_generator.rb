@@ -1,5 +1,4 @@
 class KeyGenerator
-
   attr_reader :key, :a_key
 
   def initialize(key = [1, 2, 3, 4, 5])
