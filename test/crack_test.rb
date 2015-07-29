@@ -7,9 +7,10 @@ class CrackTest < Minitest::Test
 
   def test_initializes_with_zero_as_key
     crack = Crack.new
-    assert_equal "00000", crack.crack_key
+    assert_equal [0, 0, 0, 0, 0], crack.key
   end
 
+<<<<<<< Updated upstream
   def test_formats_keys
     skip
     crack = Crack.new
@@ -22,4 +23,6 @@ class CrackTest < Minitest::Test
     crack.cracker
     assert_equal "igopp", crack.results
   end
+=======
+>>>>>>> Stashed changes
 end
