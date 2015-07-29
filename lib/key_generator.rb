@@ -7,6 +7,7 @@ class KeyGenerator
 
   def generate_key
     @key = (00000..99999).to_a.sample
+    @key = @key.to_s.rjust(5, "0")
     @final_key = @key.to_s.split("")
   end
 end
