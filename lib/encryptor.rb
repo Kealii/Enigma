@@ -19,14 +19,14 @@ class Encryptor
   end
 
   def collect_message
-    incomplete_file = "../files/" + ARGV[0].to_s
-    @input = File.open("#{incomplete_file}", "r")
+    file = "./files/" + ARGV[0].to_s
+    @input = File.open("#{file}", "r")
     @message = File.read(@input)
   end
 
   def write_encrypted_message
-    incomplete_file = "../files/" + ARGV[1].to_s
-    @output = File.open("#{incomplete_file}", "w")
+    file = "./files/" + ARGV[1].to_s
+    @output = File.open("#{file}", "w")
     @output.write(@results)
     @output.close
   end

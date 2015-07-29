@@ -18,12 +18,14 @@ class Decryptor
   end
 
   def collect_message
-    @input = File.open("#{ARGV[0]}", "r")
+    file = "./files/" + ARGV[0].to_s
+    @input = File.open("#{file}", "r")
     @message = File.read(@input)
   end
 
   def write_encrypted_message
-    @output = File.open("#{ARGV[1]}", "w")
+    file = "./files/" + ARGV[1].to_s
+    @output = File.open("#{file}", "w")
     @output.write(@results)
     @output.close
   end
@@ -44,3 +46,5 @@ class Decryptor
   end
 
 end
+
+d = Decryptor.new
