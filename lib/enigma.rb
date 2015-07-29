@@ -35,13 +35,13 @@ class Enigma
     @results = @results.join
   end
 
-  def decrypt(string, rotation = @final_offsets)
+  def decrypt(string = @message, rotation = @final_offsets)
     @results = []
     @letters = string.split("")
     @letters.map.with_index do |letter, index|
       @results << encrypt_letter(letter, (-1 * rotation[index % 4]))
     end
-    @results.join
+    @results = @results.join
   end
 
   def encrypt_letter(letter, rotation)

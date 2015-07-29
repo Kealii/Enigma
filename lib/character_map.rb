@@ -3,7 +3,7 @@ class CharacterMap
 
   def initialize(rotation)
     letters = ('a'..'z').to_a
-    numbers = (0..9).to_a
+    numbers = ['0','1','2','3','4','5','6','7','8','9']
     characters = [" ",".",","]
     character_map = []
     character_map = letters + numbers + characters

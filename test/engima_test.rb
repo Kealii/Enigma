@@ -6,6 +6,7 @@ require '../lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def test_we_can_read_input
+    skip
     e = Enigma.new
     e.collect_message
     e.output_message
@@ -37,7 +38,8 @@ class EnigmaTest < Minitest::Test
     assert_equal "x4is4", e.encrypt("hello")
   end
 
-  def test_we_can_pass_in_string_to_rotation
+  def test_we_can_pass_in_string_to_encrypt
+    skip
     e = Enigma.new
     e.collect_message
     e.encrypt
@@ -45,5 +47,11 @@ class EnigmaTest < Minitest::Test
     assert_equal "94p0ngbz9xql8g", e.final_message
   end
 
-
+  def test_we_can_pass_in_string_to_decrypt
+    e = Enigma.new
+    e.collect_message
+    e.decrypt
+    e.output_message
+    assert_equal "test test test", e.final_message
+  end
 end
