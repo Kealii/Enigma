@@ -4,13 +4,14 @@ require_relative 'character_map'
 
 class Enigma
   attr_accessor :message, :final_message, :date
-  attr_reader :final_offsets, :key
+  attr_reader :final_rotations, :key
 
   def initialize
     @keygen = KeyGenerator.new
-    @key = @keygen.key
-    @offset = Offsets.new("111111", @key)
-    @final_offsets = @offset.master_rotations
+    @key = @keygen.generate_key
+    @offset = Offsets.new('111111', @key)
+    @final_rotations = @offset.master_rotations
+    @date = @offset.date
   end
 
   def collect_message
@@ -23,10 +24,10 @@ class Enigma
     @output.write(@results)
     @output.close
     @final_message = @results
-    puts "Created #{@output} using #{@input} using #{@key} and the date of #{@date}"
+    puts "Created Output using the key #{@key.join} and the date of #{@date}"
   end
 
-  def encrypt(string = @message, rotation = @final_offsets)
+  def encrypt(string = @message, rotation = @final_rotations)
     @results = []
     @letters = string.split("")
     @letters.map.with_index do |letter, index|
@@ -35,7 +36,7 @@ class Enigma
     @results = @results.join
   end
 
-  def decrypt(string = @message, rotation = @final_offsets)
+  def decrypt(string = @message, rotation = @final_rotations)
     @results = []
     @letters = string.split("")
     @letters.map.with_index do |letter, index|

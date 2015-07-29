@@ -14,8 +14,8 @@ class Offsets
   end
 
   def square_date
-    # offset_date
-    @square_date = date.to_i ** 2
+    offset_date
+    @square_date = @date.to_i ** 2
   end
 
   def extract_date_key
@@ -31,17 +31,14 @@ class Offsets
   end
 
   def b_rotations
-    extract_date_key
     @extraction[1].to_i + @key[1..2].join.to_i
   end
 
   def c_rotations
-    extract_date_key
     @extraction[2].to_i + @key[2..3].join.to_i
   end
 
   def d_rotations
-    extract_date_key
     @extraction[3].to_i + @key[3..4].join.to_i
   end
 

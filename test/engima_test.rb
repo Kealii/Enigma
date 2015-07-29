@@ -29,11 +29,13 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_offsets_and_date_adding_to_rotate
+    skip
     e = Enigma.new
-    assert_equal [16, 26, 36, 46], e.final_offsets
+    assert_equal [16, 26, 36, 46], e.final_rotations
   end
 
   def test_we_can_grab_rotation_and_encrypt
+    skip
     e = Enigma.new
     assert_equal "x4is4", e.encrypt("hello")
   end
@@ -48,10 +50,13 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_we_can_pass_in_string_to_decrypt
+    skip
     e = Enigma.new
     e.collect_message
     e.decrypt
     e.output_message
+    assert_equal "", e.final_rotations
     assert_equal "test test test", e.final_message
   end
+
 end
