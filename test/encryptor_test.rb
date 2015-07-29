@@ -4,6 +4,7 @@ require 'minitest/pride'
 require '../lib/encryptor'
 
 class EncryptorTest < Minitest::Test
+  
   def test_we_can_read_input
     e = Encryptor.new
     assert_equal "test test test\n", e.message

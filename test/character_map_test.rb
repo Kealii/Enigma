@@ -3,6 +3,7 @@ require 'minitest/pride'
 require '../lib/character_map'
 
 class CharacterMapTest < Minitest::Test
+  
   def test_a_is_first_character_of_map
     map = CharacterMap.new(0)
     assert_equal "a", map.cipher['a']

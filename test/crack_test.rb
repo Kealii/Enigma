@@ -22,6 +22,4 @@ class CrackTest < Minitest::Test
     crack.cracker
     assert_equal "igopp", crack.results
   end
-
-
 end

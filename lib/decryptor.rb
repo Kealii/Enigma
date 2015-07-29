@@ -4,13 +4,13 @@ require_relative 'offsets'
 
 class Decryptor
   attr_accessor :message, :date
-  attr_reader :final_rotations, :key, :final_message
+  attr_reader :final_rotations, :key, :results
 
   def initialize
-    @key = [1,2,3,4,5]
-    @offset = Offsets.new('111111', @key)
+    @key = ARGV[2].split("")
+    @date = ARGV[3].to_s
+    @offset = Offsets.new(@date, @key)
     @final_rotations = @offset.master_rotations
-    @date = @offset.date
     collect_message
     decrypt
     write_encrypted_message
@@ -26,7 +26,6 @@ class Decryptor
     @output = File.open("#{ARGV[1]}", "w")
     @output.write(@results)
     @output.close
-    @final_message = @results
   end
 
   def decrypt(string = @message, rotation = @final_rotations)
