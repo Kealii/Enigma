@@ -9,12 +9,12 @@ class Offsets
     @date = date
   end
 
-  def offset_date
+  def real_date
     @date = Time.now.strftime("%d%m%y")
   end
 
   def square_date
-    #offset_date
+    #real_date
     @square_date = @date.to_i ** 2
   end
 
