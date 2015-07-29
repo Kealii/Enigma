@@ -1,12 +1,15 @@
 class Crack
-  attr_reader :key
+  attr_reader :key, :rotations
 
   def initialize(key = 0)
     @key = [0, 0, 0, 0, 0]
   end
 
   def cracker
+    @key = @key.join.to_i
     @key += 1
+    @key = @key.to_s.rjust(5, "0")
+    @rotations = @key.split('')
   end
 
 

@@ -10,19 +10,16 @@ class CrackTest < Minitest::Test
     assert_equal [0, 0, 0, 0, 0], crack.key
   end
 
-<<<<<<< Updated upstream
-  def test_formats_keys
-    skip
-    crack = Crack.new
-    rotate = crack.format_key
-    assert_equal "00000", rotate
-  end
-
-  def test_we_can_encrypt_string_with_rotation
+  def test_splits_and_adds_one
     crack = Crack.new
     crack.cracker
-    assert_equal "igopp", crack.results
+    assert_equal "00001", crack.key
   end
-=======
->>>>>>> Stashed changes
+
+  def test_rotations_are_array
+    crack = Crack.new
+    crack.cracker
+    assert_equal Array, crack.rotations.class
+  end
+
 end
