@@ -20,19 +20,19 @@ class Enigma
 
   def output_message
     @output = File.open("#{ARGV[1]}", "w")
-    @output.write(@message)
+    @output.write(@results)
     @output.close
-    @final_message = @message
+    @final_message = @results
     puts "Created #{@output} using #{@input} using #{@key} and the date of #{@date}"
   end
 
-  def encrypt(string, rotation = @final_offsets)
+  def encrypt(string = @message, rotation = @final_offsets)
     @results = []
     @letters = string.split("")
     @letters.map.with_index do |letter, index|
       @results << encrypt_letter(letter, rotation[index % 4])
     end
-    @results.join
+    @results = @results.join
   end
 
   def decrypt(string, rotation = @final_offsets)
