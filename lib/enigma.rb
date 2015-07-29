@@ -3,13 +3,13 @@ require_relative 'key_generator'
 require_relative 'character_map'
 
 class Enigma
-  attr_accessor :message, :final_message, :key, :date
-  attr_reader :final_offsets
+  attr_accessor :message, :final_message, :date
+  attr_reader :final_offsets, :key
 
   def initialize
-    @offset = Offsets.new
     @keygen = KeyGenerator.new
     @key = @keygen.key
+    @offset = Offsets.new("111111", @key)
     @final_offsets = @offset.master_rotations
   end
 

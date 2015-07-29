@@ -6,6 +6,7 @@ class KeyGenerator
   end
 
   def generate_key
-    @key = (11111..99999).to_a.sample
+    @key = []
+    @key << (11111..99999).to_a.sample 
   end
 end
