@@ -4,7 +4,7 @@ require_relative 'offsets'
 
 class Encryptor
   attr_accessor :message, :date
-  attr_reader :final_rotations, :key, :final_message
+  attr_reader :final_rotations, :key, :results
 
   def initialize
     @keygen = KeyGenerator.new
@@ -19,15 +19,16 @@ class Encryptor
   end
 
   def collect_message
-    @input = File.open("#{ARGV[0]}", "r")
+    incomplete_file = "../files/" + ARGV[0].to_s
+    @input = File.open("#{incomplete_file}", "r")
     @message = File.read(@input)
   end
 
   def write_encrypted_message
-    @output = File.open("#{ARGV[1]}", "w")
+    incomplete_file = "../files/" + ARGV[1].to_s
+    @output = File.open("#{incomplete_file}", "w")
     @output.write(@results)
     @output.close
-    @final_message = @results
   end
 
   def encrypt(string = @message, rotation = @final_rotations)
@@ -45,3 +46,5 @@ class Encryptor
     cipher_for_rotation[letter]
   end
 end
+
+e = Encryptor.new
