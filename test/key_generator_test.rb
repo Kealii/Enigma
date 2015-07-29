@@ -18,7 +18,7 @@ class KeyGeneratorTest < Minitest::Test
   def test_generate_key_generates_1_number
     keygen = KeyGenerator.new
     keygen.generate_key
-    assert_equal 7, keygen.key.to_s.length
+    assert_equal 5, keygen.key.to_s.length
   end
 
 end
