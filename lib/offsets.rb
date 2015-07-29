@@ -14,7 +14,7 @@ class Offsets
   end
 
   def square_date
-    offset_date
+    #offset_date
     @square_date = @date.to_i ** 2
   end
 
