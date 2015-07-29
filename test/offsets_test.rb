@@ -16,36 +16,37 @@ class OffsetsTest < Minitest::Test
   end
 
   def test_squares_date
-    offset = Offsets.new("111111")
+    offset = Offsets.new
     square = offset.square_date
     assert_equal square, 12345654321
   end
 
   def test_extracts_last_four_digits
-    offset = Offsets.new("111111")
+    offset = Offsets.new
     test_key = offset.extract_date_key
     assert_equal test_key, [4, 3, 2, 1]
   end
 
-  def test_adds_arotations
+  def test_adds_a_rotations
     offset = Offsets.new
-    offset.extract_date_key
     assert_equal 16, offset.a_rotations
   end
 
-  def test_adds_brotations
+  def test_adds_b_rotations
     offset = Offsets.new
     offset.extract_date_key
     assert_equal 26, offset.b_rotations
   end
 
-  def test_adds_arotations
+  def test_adds_c_rotations
     offset = Offsets.new
+    assert_equal "111111", offset.date
     offset.extract_date_key
+    assert_equal [1,2,3,4,5], offset.key
     assert_equal 36, offset.c_rotations
   end
 
-  def test_adds_drotations
+  def test_adds_d_rotations
     offset = Offsets.new
     offset.extract_date_key
     assert_equal 46, offset.d_rotations

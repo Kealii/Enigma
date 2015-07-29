@@ -14,24 +14,10 @@ class KeyGeneratorTest < Minitest::Test
     assert_includes (11111..99999), keygen.generate_key.to_i
   end
 
-  def test_finds_akey
+  def test_generate_key_generates_1_number
     keygen = KeyGenerator.new
-    assert_equal 12, keygen.a_key
-  end
-
-  def test_finds_bkey
-    keygen = KeyGenerator.new
-    assert_equal 23, keygen.b_key
-  end
-
-  def test_finds_ckey
-    keygen = KeyGenerator.new
-    assert_equal 34, keygen.c_key
-  end
-
-  def test_finds_dkey
-    keygen = KeyGenerator.new
-    assert_equal 45, keygen.d_key
+    keygen.generate_key
+    assert_equal 5, keygen.key.to_s.length
   end
 
 end
