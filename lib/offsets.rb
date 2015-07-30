@@ -1,16 +1,16 @@
 require_relative '../lib/key_generator'
 
 class Offsets
+  def self.string_date(date)
+    date.strftime("%d%m%y")
+  end
+
   attr_accessor :key
   attr_reader :date
 
   def initialize(date = "111111", key = [1, 2, 3, 4, 5])
     @key = key
     @date = date
-  end
-
-  def real_date
-    @date = Time.now.strftime("%d%m%y")
   end
 
   def square_date

@@ -2,34 +2,23 @@ require_relative 'character_map'
 require_relative 'key_generator'
 require_relative 'offsets'
 
+# Encryptor.new(test_input_file,
+#               "output_file",
+#               Offsets.string_date(ODate.parse('2015-02-03'))
+#              )
+
 class Encryptor
   attr_accessor :message, :date
   attr_reader :final_rotations, :key, :results
 
-  def initialize
+  def initialize(date, message)
     @keygen = KeyGenerator.new
-    @key = @keygen.generate_key
-    @offset = Offsets.new('111111', @key)
-    @offset.real_date
+    @key    = @keygen.generate_key
+    @offset = Offsets.new(date, @key)
     @final_rotations = @offset.master_rotations
     @date = @offset.date
-    collect_message
+    @message = message
     encrypt
-    write_encrypted_message
-    puts "Created #{ARGV[1]} using the key #{@key.join} and the date of #{@date}"
-  end
-
-  def collect_message
-    file = "./files/" + ARGV[0].to_s
-    @input = File.open("#{file}", "r")
-    @message = File.read(@input)
-  end
-
-  def write_encrypted_message
-    file = "./files/" + ARGV[1].to_s
-    @output = File.open("#{file}", "w")
-    @output.write(@results)
-    @output.close
   end
 
   def encrypt(string = @message, rotation = @final_rotations)
@@ -48,4 +37,14 @@ class Encryptor
   end
 end
 
-e = Encryptor.new
+
+if $PROGRAM_NAME == __FILE__
+  input_file  = ARGV[0]
+  output_file = ARGV[1]
+
+  message     = File.read("./files/" + input_file)
+  date        = Offsets.string_date Time.now
+  e           = Encryptor.new(date, message)
+  File.write ("./files/" + ARGV[1]), e.results
+  puts "Created #{output_file} using the key #{e.key.join} and the date of #{e.date}"
+end
