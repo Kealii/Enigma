@@ -10,6 +10,7 @@ class Encryptor
     @keygen = KeyGenerator.new
     @key = @keygen.generate_key
     @offset = Offsets.new('111111', @key)
+    @offset.real_date
     @final_rotations = @offset.master_rotations
     @date = @offset.date
     collect_message
