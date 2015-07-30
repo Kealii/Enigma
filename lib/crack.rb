@@ -35,7 +35,7 @@ class Crack
     # p @results
     temp_results = @results.join[-7..-1]
     p temp_results
-    @results.join[-1..-7] == "..end.."
+    @results.join[-7..-1] == "..end.."
   end
 
   def decrypt(string = @message, rotation = @final_rotations)
