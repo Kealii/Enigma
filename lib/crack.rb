@@ -1,8 +1,15 @@
-class Crack
-  attr_reader :key, :rotations
+# require_relative 'decryptor'
 
-  def initialize(key = 0)
+
+class Crack
+  attr_reader :key, :rotations, :message
+
+  def initialize
     @key = [0, 0, 0, 0, 0]
+    @message = File.open(ARGV[0], "r")
+    @message = File.read(@message)
+    @output = File.open(ARGV[1], "w")
+    # @decryptor = Decryptor.new(@decryptor.offset.date = ("000000"))
   end
 
   def cracker
@@ -12,12 +19,32 @@ class Crack
     @rotations = @key.split('')
   end
 
+  def cracked?
+    [-7..-1] == ("..end..")
+  end
+
+  def decrypt(string = @message, rotation = @final_rotations)
+    @results = []
+    @letters = string.split("")
+    @letters.map.with_index do |letter, index|
+      @results << encrypt_letter(letter, (-1 * rotation[index % 4]))
+    end
+    @results = @results.join
+  end
+
+  def encrypt_letter(letter, rotation)
+    character_map = CharacterMap.new(rotation)
+    cipher_for_rotation = character_map.cipher
+    cipher_for_rotation[letter]
+  end
+
+
 
 
 
 
 end
-
+# decryption = Decryptor.new(@message, Key.new(key_arg), @date)
 
 
 

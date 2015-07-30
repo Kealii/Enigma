@@ -22,4 +22,9 @@ class CrackTest < Minitest::Test
     assert_equal Array, crack.rotations.class
   end
 
+  def test_can_take_message
+    crack = Crack.new
+    assert_equal "8.4ymnqx845j7n", crack.message
+  end
+
 end
