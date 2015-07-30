@@ -8,11 +8,24 @@ class Crack
   def initialize
     @results = []
     @key = [0, 0, 0, 0, 0]
-    @message = File.open(ARGV[0], "r")
-    @message = File.read(@message)
-    @output = File.open(ARGV[1], "w")
     @date = ARGV[2]
+    collect_message
+    cracker
+    write_cracked_message
+  end
 
+  def collect_message
+    file = "./files/" + ARGV[0].to_s
+    @input = File.open("#{file}", "r")
+    @message = File.read(@input)
+  end
+
+  def write_cracked_message
+    file = "./files/" + ARGV[1].to_s
+    @output = File.open("#{file}", "w")
+    @output.write(@results.join)
+    @output.close
+    puts "Created #{ARGV[1]} with #{@key} and #{@date}"
   end
 
   def cracker
@@ -26,7 +39,6 @@ class Crack
       decrypt(@message, @final_rotations)
     end
     @key = @key.join
-    p "Created #{ARGV[1]} with #{@key} and #{@date}"
   end
 
   def cracked?
@@ -51,3 +63,5 @@ class Crack
   end
 
 end
+
+crack = Crack.new
