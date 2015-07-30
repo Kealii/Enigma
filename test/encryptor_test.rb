@@ -7,7 +7,7 @@ class EncryptorTest < Minitest::Test
 
   def test_we_can_read_input
     e = Encryptor.new
-    assert_equal "test test test\n", e.message
+    assert_equal "test test test", e.message
   end
 
   def test_we_can_pass_string
